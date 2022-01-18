@@ -1,14 +1,25 @@
 const express = require('express');
 http = require('http');
 const morgan = require('morgan');
-const dishRouter = require('./routes/dishRouter');
-const app = express();
-app.use('/dishes',dishRouter);
 const bodyParser = require('body-parser');
+
 const hostname = 'localhost';
 const port = 3000;
+
+const dishRouter = require('./routes/dishRouter');
+const promotionRouter = require('./routes/promoRouter');
+const leaderRouter = require('./routes/leaderRouter');
+
+const app = express();
 app.use(bodyParser.json());
 app.use(morgan('dev'));
+
+app.use('/dishes',dishRouter);
+app.use('/promotions',promotionRouter);
+app.use('/leaders',leaderRouter);
+
+
+
 app.all('/dishes',(req,res,next) => {
   res.statusCode = 200;
   res.setHeader('Content-Type','text/plain');
