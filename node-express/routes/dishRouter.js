@@ -21,7 +21,7 @@ dishRouter.route('/')
 })
 .put((req, res, next) => {
     res.statusCode = 403;
-    res.end('PUT operation not supported on /dishes');
+    res.end('PUT operation not supported');
 })
 .delete((req, res, next) => {
     res.end('Deleting all dishes');
@@ -42,9 +42,8 @@ dishRouter.route('/:dishId')
         ' with details: ' + req.body.description);
 })
 .put((req, res, next) => {
-    res.write('Updating the dish: ' + req.params.dishId + '\n');
-  res.end('Will update the dish: ' + req.body.name + 
-        ' with details: ' + req.body.description);
+    res.statusCode = 403;
+    res.end('PUT operation not supported');
 })
 .delete((req, res, next) => {
     res.end('Deleting dish: ' + req.params.dishId);
