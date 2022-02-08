@@ -12,7 +12,7 @@ connect.then((db) => {
         description: 'test'
     })
         .then((dish) => {
-        console.log(dish);
+        console.log("see here",dish);
 
             return Dishes.findByIdAndUpdate(dish._id, {
                 $set: { description: 'Updated test'}
@@ -31,7 +31,7 @@ connect.then((db) => {
             return dish.save();
         })
         .then((dish) => {
-            console.log("here is comment ---",dish);
+            console.log(dish);
 
         return Dishes.remove({});
         })
